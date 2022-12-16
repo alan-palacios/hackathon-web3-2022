@@ -15,11 +15,7 @@ pub struct DnsRecord {
 pub struct DnsMeta {
     pub name: String,
     pub link: String,
-    pub description: String,
-    //pub category: String,
-    //pub tags: String[],
-    //pub date: String,
-    //pub image: String,
+    pub description: String
 }
 
 #[derive(Decode, Clone)]
