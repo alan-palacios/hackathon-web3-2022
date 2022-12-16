@@ -71,7 +71,7 @@ fn contract() -> &'static mut Goc {
 }
 
 metadata! {
-    title: "DNS test",
+    title: "Hello World DNS",
     init:
         input: GOCInit,
     handle:
