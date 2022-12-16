@@ -1,10 +1,10 @@
-import { Button } from "@gear-js/ui";
 import { bufferString } from "assets/metaBuffer";
 import Input from "components/Input";
 import { Select } from "components/Select";
 import { useReadConfig } from "hooks/useReadConfig";
 import { useEffect, useMemo, useState } from "react";
 import { Icon } from '@iconify/react';
+import Button from "components/Button";
 
 export default function Home() {
 	const [selectValue, setSelectValue] = useState('GetAll');
@@ -37,7 +37,7 @@ export default function Home() {
 						<span>{element.meta.description}</span>
 						<span>{element.createdBy}</span>
 						<span>{element.meta.link}</span>
-						<Button type="button" text="Open" size="small" onClick={() => readDataFrom(element.meta.link)} />
+						<Button label="Open" type="button" onClick={() => readDataFrom(element.meta.link)} />
 					</li>
 				))
 			) : (

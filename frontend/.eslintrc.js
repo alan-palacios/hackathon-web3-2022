@@ -22,6 +22,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'react/require-default-props': 'off', // we don't use prop-types
+    'react/button-has-type': 'off',
 
     'import/prefer-default-export': 'off',
 
