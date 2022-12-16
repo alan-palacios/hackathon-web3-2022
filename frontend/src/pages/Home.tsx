@@ -33,12 +33,12 @@ export default function Home() {
         stateAll.state?.Records.map((element) => (
           <li key={element.id}
 						className='w-80 h-80 bg-neutral-800 rounded-lg flex flex-col justify-center'>
-            <span>{element.id}</span>
             <span>{element.meta.name}</span>
-            <span>{element.meta.link}</span>
+            <span>{element.id}</span>
             <span>{element.meta.description}</span>
             <span>{element.createdBy}</span>
-            <Button type="button" text="open" size="small" onClick={() => readDataFrom(element.meta.link)} />
+            <span>{element.meta.link}</span>
+            <Button type="button" text="Open" size="small" onClick={() => readDataFrom(element.meta.link)} />
           </li>
         ))
       ) : (
