@@ -49,7 +49,15 @@ export default function Home() {
 
 	return (
 		<div className="flex flex-col justify-center bg-gradient-to-b from-dark1 to-dark2 min-h-full h-full">
-			<p className="italic">THE CHAIN</p>
+      <div className="flex flex-col items-center">
+        <div>
+          The chain or icon here
+        </div>
+        <div>
+          Where blocks connect... or some phrase here
+        </div>
+        <Input value={search} onChange={setSearch} />
+      </div>
       {stateAll.isStateRead ? (
         <div>
           {getElementValue}
