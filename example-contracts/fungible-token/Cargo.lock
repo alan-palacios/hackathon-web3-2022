@@ -226,6 +226,8 @@ name = "ft-io"
 version = "0.1.3"
 dependencies = [
  "gstd",
+ "parity-scale-codec",
+ "scale-info",
 ]
 
 [[package]]

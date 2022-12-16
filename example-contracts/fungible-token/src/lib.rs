@@ -7,9 +7,11 @@ use ft_io::*;
 use gstd::{debug, exec, msg, prelude::*, ActorId};
 
 const ZERO_ID: ActorId = ActorId::new([0u8; 32]);
+static mut DNS_META: Option<DnsMeta> = None;
 
 #[derive(Debug, Default)]
 struct FungibleToken {
+    admin: ActorId, // DNS
     /// Name of the token.
     name: String,
     /// Symbol of the token.
@@ -153,7 +155,18 @@ gstd::metadata! {
 extern "C" fn handle() {
     let action: FTAction = msg::load().expect("Could not load Action");
     let ft: &mut FungibleToken = unsafe { FUNGIBLE_TOKEN.get_or_insert(Default::default()) };
+
+    let contract = contract(); // DNS
+
     match action {
+        FTAction::GetDnsMeta => unsafe { FTEvent::DnsMeta(DNS_META.clone()); }
+        FTAction::SetDnsMeta(meta) => unsafe {
+            if contract.admin != msg::source() {
+                panic!("Dns metadata can be added only by admin")
+            }
+            DNS_META = Some(meta);
+            FTEvent::DnsMeta(DNS_META.clone());
+        }
         FTAction::Mint(amount) => {
             ft.mint(amount);
         }
@@ -205,6 +218,12 @@ extern "C" fn meta_state() -> *mut [i32; 2] {
     }
     .encode();
     gstd::util::to_leak_ptr(encoded)
+}
+
+
+// DNS
+fn contract() -> &'static mut FungibleToken {
+    unsafe { FUNGIBLE_TOKEN.get_or_insert(Default::default()) }
 }
 
 #[derive(Debug, Encode, Decode, TypeInfo)]
