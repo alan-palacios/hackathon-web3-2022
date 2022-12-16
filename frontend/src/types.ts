@@ -1,21 +1,21 @@
 import { ReactNode } from 'react';
 
 export type ElementType = {
-  createdBy: string;
-  id: string;
+	createdBy: string;
+	id: string;
 
-  meta: {
-    link: string;
-    name: string;
-    description: string;
-  };
+	meta: {
+		link: string;
+		name: string;
+		description: string;
+	};
 };
 
 export type Props = {
-  children: ReactNode;
+	children: ReactNode;
 };
 
 export type UserStatus = {
-  isAdmin: boolean,
-  isMember: boolean
+	isAdmin: boolean,
+	isMember: boolean
 };

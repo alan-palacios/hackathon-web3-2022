@@ -16,10 +16,10 @@ function Component() {
 	return (
 		<div className='bg-neutral-900 w-full min-w-full h-screen text-white'>
 			<Header isAccountVisible={isAccountReady} />
-				<main>
-					{isAppReady ? <Routing /> : (<span>Loading...</span>) }
-				</main>
-				<ToastContainer />
+			<main>
+				{isAppReady ? <Routing /> : (<span>Looooading...</span>)}
+			</main>
+			<ToastContainer />
 			<Footer />
 		</div>
 	);

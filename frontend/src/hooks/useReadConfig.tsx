@@ -4,32 +4,32 @@ import { useReadState } from '@gear-js/react-hooks';
 import { CONTRACT_ID } from '../consts';
 
 type StateAllConfig = {
-  Records: ElementType[];
-  Record: ElementType;
+	Records: ElementType[];
+	Record: ElementType;
 };
 type PayloadType = {
-  [key: string | number | symbol]: any;
+	[key: string | number | symbol]: any;
 };
 
 export function useReadConfig(metaBuffer: Buffer, payload: string, payloadText?: string) {
-  const programId = useMemo(() => CONTRACT_ID, []);
-  const [newPayload, setNewPayload] = useState({ GetAll: null } as {});
+	const programId = useMemo(() => CONTRACT_ID, []);
+	const [newPayload, setNewPayload] = useState({ GetAll: null } as {});
 
-  useEffect(() => {
-    const obj: PayloadType = {};
-    if (!(payload === 'GetAll')) {
-      if (payload && payloadText) {
-        obj[payload] = payloadText || '';
-        setNewPayload(obj);
-      }
-    } else {
-      setNewPayload({ GetAll: null });
-    }
-  }, [payload, payloadText]);
+	useEffect(() => {
+		const obj: PayloadType = {};
+		if (!(payload === 'GetAll')) {
+			if (payload && payloadText) {
+				obj[payload] = payloadText || '';
+				setNewPayload(obj);
+			}
+		} else {
+			setNewPayload({ GetAll: null });
+		}
+	}, [payload, payloadText]);
 
-  const stateAll = useReadState<StateAllConfig>(programId, metaBuffer, newPayload);
+	const stateAll = useReadState<StateAllConfig>(programId, metaBuffer, newPayload);
 
-  return {
-    stateAll,
-  };
+	return {
+		stateAll,
+	};
 }
