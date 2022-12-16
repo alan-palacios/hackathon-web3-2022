@@ -1,34 +1,99 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Icon } from '@iconify/react';
+import { ElementType } from 'types';
+import { useReadConfig } from 'hooks/useReadConfig';
+import { bufferString } from "assets/metaBuffer";
+import Button from './Button';
 
-export default function 
-() {
-  return (
-    <div className="bg-dark3 w-96 h-96 flex flex-col p-5 m-3 rounded-lg">
-      <h1 className='text-xl font-medium italic'>Name</h1>
-      <div className='flex flex-row font-light items-center'>
-        <span className='mr-2'>
-          ID
-        </span>
-        <span>
-          <Icon icon="material-symbols:content-copy" width={20}/>
-        </span>
-      </div>
-      <span>Description</span>
-      <div className='flex flex-row justify-between font-light text-sm'>
-        <div className='flex flex-row'>
-          <Icon icon="mdi-light:account" width={20}/>
-          <span className='ml-1'>Created By</span>
-        </div>
-        <span>Date</span>
-      </div>
-      <div className='flex flex-row font-light text-sm'>
-          <Icon icon="mdi-light:link-variant" width={20}/>
-          <span className='ml-1'>Link</span>
-      </div>
-      <div className='flex justify-center'>
-        Button here
-      </div>
-    </div>
-  )
+interface CardContractProps {
+	contract: ElementType
+}
+
+export default function CardContract({ contract, ...defaultProps }: CardContractProps) {
+	function shortenHex(hex: string, length = 4) {
+		if (!hex) return ''
+		return `${hex.substring(0, length + 2)}…${hex.substring(
+			hex.length - length
+		)}`;
+	}
+	const [selectValue, setSelectValue] = useState('GetAll');
+	const [search, setSearch] = useState('');
+
+
+	const [isCopied, setIsCopied] = useState(false)
+	const [isCopiedCreator, setIsCopiedCreator] = useState(false)
+	const metaBuffer = useMemo(() => Buffer.from(bufferString, 'base64'), []);
+	const { stateAll } = useReadConfig(metaBuffer, selectValue, search);
+
+	const copyText = (type: string) => {
+		if (type === "creator") {
+			if (!isCopiedCreator) {
+				navigator.clipboard.writeText(contract.createdBy);
+				setIsCopiedCreator(true)
+				setTimeout(() => {
+					setIsCopiedCreator(false)
+				}, 5000)
+			}
+		} else if (type === " ") {
+			if (!isCopied) {
+				navigator.clipboard.writeText(contract.id);
+				setIsCopied(true)
+				setTimeout(() => {
+					setIsCopied(false)
+				}, 5000)
+			}
+		}
+	}
+	useEffect(() => {
+		if (stateAll.error) {
+			setSelectValue('GetAll');
+			setSearch('');
+		}
+	}, [stateAll.error]);
+
+	const readDataFrom = (urlLink: string | undefined) => {
+		if (!urlLink) return;
+		window.open(urlLink);
+	};
+
+
+	return (
+		<div className="bg-dark3 w-80 h-80 flex flex-col p-5 m-3 rounded-lg">
+			<h1 className='text-xl font-medium italic'>{contract.meta.name}</h1>
+			<div className='flex flex-row font-light items-center'>
+				<span className='mr-2'>
+					{shortenHex(contract.id)}
+				</span>
+				{isCopied ?
+					<div className='flex flex-row'>
+						<Icon icon="akar-icons:check" className='text-yellow' width={20} onClick={() => copyText(" ")} />
+					</div>
+					:
+					<Icon icon="akar-icons:copy" className='text-yellow hover:cursor-pointer' width={20} onClick={() => copyText(" ")} />
+				}
+			</div>
+			<span>{contract.meta.description}</span>
+			<div className='flex flex-row justify-between font-light text-sm'>
+				<div className='flex flex-row'>
+					<Icon icon="mdi-light:account pl-2" width={20} />
+					<span className='ml-1'>{shortenHex(contract.createdBy)}</span>
+					{isCopiedCreator ?
+						<div className='flex flex-row'>
+							<Icon icon="akar-icons:check" className='text-yellow' width={20} onClick={() => copyText("creator")} />
+						</div>
+						:
+						<Icon icon="akar-icons:copy" className='text-yellow hover:cursor-pointer' width={20} onClick={() => copyText("creator")} />
+					}
+				</div>
+				<span>Date</span>
+			</div>
+			<div className='flex flex-row font-light text-sm'>
+				<Icon icon="mdi-light:link-variant" width={20} />
+				<span className='ml-1'>{contract.meta.link}</span>
+			</div>
+			<div className='flex justify-center'>
+				<Button label="Open" width="40" color="purple" onClick={() => readDataFrom(contract.meta.link)} />
+			</div>
+		</div>
+	)
 }

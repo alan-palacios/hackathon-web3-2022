@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# Game of chance
+# Dns template
 
 [![Build][build_badge]][build_href]
 [![License][lic_badge]][lic_href]

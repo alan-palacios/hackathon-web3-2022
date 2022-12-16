@@ -31,19 +31,13 @@ export default function Home() {
 	const getElementValue = useMemo(
 		() =>
 			stateAll.state?.Records.length ? (
-				stateAll.state?.Records.map((element) => (
-					<div className="w-full">
-						<li key={element.id}
-							className='w-full bg-neutral-800 rounded-lg flex flex-col justify-center'>
-							<span>{element.meta.name}</span>
-							<span>{element.id}</span>
-							<span>{element.meta.description}</span>
-							<span>{element.createdBy}</span>
-							<span>{element.meta.link}</span>
-						</li>
+				stateAll.state?.Records.map((contract) => (
+					<div className="">
+						<CardContract contract={contract} />
+						{/*	
 						<div className="flex justify-center">
 							<Button label="Open" width="40" color="purple" onClick={() => readDataFrom(element.meta.link)} />
-						</div>
+						</div> */}
 					</div>
 				))
 			) : (
@@ -68,16 +62,13 @@ export default function Home() {
 			<div className="w-full flex flex-col justify-center items-center mt-10">
 				<div className="flex items-center space-x-2">
 					<Input value={search} onChange={setSearch} />
-					<Button label="" width="40" color="purple" />
+					<Button label="hola" width="40" color="purple" />
 					<Icon icon="il:search" width={25} />
 				</div>
 				<Select handleSelectedValue={setSelectValue} />
 			</div>
-      <div>
-        <CardContract/>
-      </div>
 			{stateAll.isStateRead ? (
-				<div>
+				<div className="w-full flex overflow-auto">
 					{getElementValue}
 				</div>
 			) : (
