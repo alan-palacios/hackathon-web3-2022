@@ -9,6 +9,7 @@ import { useEffect, useMemo, useState } from "react";
 export default function Home() {
 	const [selectValue, setSelectValue] = useState('GetAll');
 	const [search, setSearch] = useState('');
+	const [programId, setProgramId] = useState('');
 	// console.log(connect);
   const metaBuffer = useMemo(() => Buffer.from(bufferString, 'base64'), []);
 	const { stateAll } = useReadConfig(metaBuffer, selectValue, search);
