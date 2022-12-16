@@ -1,5 +1,3 @@
-![alt text](https://github.com/alan-palacios/hackathon-web3-2022/blob/main/frontend/public/static/logo.svg?raw=true)
-
 # Decentralized Internet
 
 Decentralized Internet demonstrates on-chain server-less approach to web sites and web applications hosting. Unlike server-based DNS built on centralized components and services, decentralized solutions running on the blockchain are characterized by boosted data security, enhanced data reconciliation, minimized system weak points, optimized resource allocation, and demonstrated great fault tolerance. It brings all the benefits of decentralization such as censorship resistance, security resilience, high transparency.
