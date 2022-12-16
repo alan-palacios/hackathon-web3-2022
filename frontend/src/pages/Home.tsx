@@ -50,11 +50,11 @@ export default function Home() {
 	return (
 		<div className="flex flex-col justify-center bg-gradient-to-b from-dark1 to-dark2 min-h-full h-full">
       <div className="flex flex-col items-center">
-        <div>
-          The chain or icon here
+        <div className="mt-20 mb-5">
+          <img src="static/logo.svg" alt="The Chain Hub" width={400}/>
         </div>
-        <div>
-          Where blocks connect... or some phrase here
+        <div className="text-xl">
+          Where blocks connect
         </div>
         <Input value={search} onChange={setSearch} />
       </div>

@@ -9,12 +9,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   className?: string
   /** Button type */
   selected?: boolean 
-  /** Button type */
-  color?: 'yellow' | 'green' | 'cyan' | 'black' | 'red'
-  /** onClick handler*/
 }
 
-export default function Button({label, full=false, className, selected=false, color='yellow', ...defaultProps}:ButtonProps) {
+export default function Button({label, full=false, className, selected=false, color='purple', ...defaultProps}:ButtonProps) {
 	return (
 		<button className={`btn-hatchy ${color} ${selected?'selected':''} pb-2 pt-4 px-10 ${className} ${full?'w-full':''} `}
 		{...defaultProps}>
