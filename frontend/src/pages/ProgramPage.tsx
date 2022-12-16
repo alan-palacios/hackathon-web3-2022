@@ -10,12 +10,12 @@ import CardContract from "components/CardContract";
 
 export default function ProgramPage() {
 	const {id } = useParams();
-	const [selectValue, setSelectValue] = useState('GetAll');
+	const [selectValue, setSelectValue] = useState('GetById');
 	const [search, setSearch] = useState('');
 	const [programId, setProgramId] = useState('');
 	const metaBuffer = useMemo(() => Buffer.from(bufferString, 'base64'), []);
-	const { stateAll } = useReadConfig(metaBuffer, selectValue, search);
-	// console.log(stateAll);
+	const { stateAll } = useReadConfig(metaBuffer, selectValue, id);
+	console.log(stateAll);
 
 	useEffect(() => {
 		if (stateAll.error) {
@@ -29,46 +29,44 @@ export default function ProgramPage() {
 		window.open(urlLink);
 	};
 
-	const getElementValue = useMemo(
-		() =>
-			stateAll.state?.Records.length ? (
-				stateAll.state?.Records.map((contract) => (
-					<div className="">
-						<div>
-							<span>Name:</span>
-							<span>{contract.id}</span>
-						</div>
-						<div>
-							<span>Description:</span>
-							<span>{contract.meta.description}</span>
-						</div>
-						<div>
-							<span>Id:</span>
-							<span>{contract.id}</span>
-						</div>
-						<div>
-							<span>Creator:</span>
-							<span>{contract.createdBy}</span>
-						</div>
-						<div>
-							<span>Category</span>
-							<span>{contract.id}</span>
-						</div>
-						<div>
-							<span>Tags:</span>
-							<span>{contract.id}</span>
-						</div>
-						<CardContract contract={contract} />
-						<div className="flex justify-center">
-							<Button label="Open" width="40" color="purple" onClick={() => readDataFrom(contract.meta.link)} />
-						</div> 
-					</div>
-				))
-			) : (
-				<h4>Results wasnt found</h4>
-			),
-		[stateAll.state?.Records],
-	);
+	const getElementValue = ()=>{
+		if(stateAll.state?.Record == null ){
+			return <span>Empty</span>
+		}
+		const contract = stateAll.state.Record;
+		return (
+			<div className="">
+				<div>
+					<span>Name:</span>
+					<span>{contract.id}</span>
+				</div>
+				<div>
+					<span>Description:</span>
+					<span>{contract.meta.description}</span>
+				</div>
+				<div>
+					<span>Id:</span>
+					<span>{contract.id}</span>
+				</div>
+				<div>
+					<span>Creator:</span>
+					<span>{contract.createdBy}</span>
+				</div>
+				<div>
+					<span>Category</span>
+					<span>{contract.id}</span>
+				</div>
+				<div>
+					<span>Tags:</span>
+					<span>{contract.id}</span>
+				</div>
+				<CardContract contract={contract} />
+				<div className="flex justify-center">
+					<Button label="Open" width="40" color="purple" onClick={() => readDataFrom(contract.meta.link)} />
+				</div> 
+			</div>
+		)
+	}
 
 	return (
 		<div className="flex flex-col justify-center bg-gradient-to-b from-dark1 to-dark2 min-h-full h-full">
@@ -77,7 +75,7 @@ export default function ProgramPage() {
 			</div>
 			{stateAll.isStateRead ? (
 				<div className="w-full flex overflow-auto">
-					{getElementValue}
+					{getElementValue()}
 				</div>
 			) : (
 				<span>Loading ...</span>

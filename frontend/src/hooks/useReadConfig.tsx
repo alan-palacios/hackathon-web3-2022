@@ -5,6 +5,7 @@ import { CONTRACT_ID } from '../consts';
 
 type StateAllConfig = {
   Records: ElementType[];
+  Record: ElementType;
 };
 type PayloadType = {
   [key: string | number | symbol]: any;
