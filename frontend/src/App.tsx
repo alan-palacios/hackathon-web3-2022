@@ -7,14 +7,15 @@ import { withProviders } from 'hooks/GearProvider';
 
 export default function Component() {
 	const { isApiReady } = useApi();
-	const { isAccountReady } = useAccount();
+	// const { isAccountReady } = useAccount();
+	// <Header isAccountVisible={isAccountReady} />
 
-	const isAppReady = isApiReady && isAccountReady;
+	const isAppReady = isApiReady;
 
 	return (
 		<>
-			<Header isAccountVisible={isAccountReady} />
-			<main>{isAppReady ? <Routing /> : (<span>Loading...</span>) }</main>
+			<Header isAccountVisible />
+				<main>{isAppReady ? <Routing /> : (<span>Loading...</span>) }</main>
 			<Footer />
 		</>
 	);

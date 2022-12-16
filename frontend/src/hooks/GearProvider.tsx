@@ -9,7 +9,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { ADDRESS } from 'consts';
 
 function ApiProvider({ children }: ProviderProps) {
-  return <GearApiProvider providerAddress={ADDRESS}>{children}</GearApiProvider>;
+  console.log(ADDRESS);
+  
+  return <GearApiProvider providerAddress="wss://node-workshop.gear.rs">{children}</GearApiProvider>;
 }
 
 function AlertProvider({ children }: ProviderProps) {
