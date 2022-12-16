@@ -61,7 +61,7 @@ export default function Home() {
 					Where blocks connect
 				</div>
 			</div>
-			<div className="bg-neutral-700 w-full flex flex-col justify-center items-center">
+			<div className="w-full flex flex-col justify-center items-center mt-10">
 				<div className="flex items-center space-x-2">
 					<Input value={search} onChange={setSearch} />
 					<Button label="" width="40" color="purple" />
