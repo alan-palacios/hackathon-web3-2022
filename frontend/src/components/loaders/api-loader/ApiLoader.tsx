@@ -1,7 +1,6 @@
-import styles from './ApiLoader.module.scss';
 
 function ApiLoader() {
-  return <p className={styles.loader}>Initializing API</p>;
+	return <p className="">Initializing API</p>;
 }
 
 export { ApiLoader };
