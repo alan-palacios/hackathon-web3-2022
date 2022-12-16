@@ -48,6 +48,9 @@ export default function Home() {
 
 	return (
 		<div className="flex flex-col justify-center bg-gradient-to-b from-dark1 to-dark2 min-h-full h-full">
+      <div className="ml-5 mt-2">
+        <Button label="VIEW CONTRACT TEMPLATE"/>
+      </div>
 			<div className="flex flex-col items-center">
 				<div className="mt-20 mb-5">
 					<img src="static/logo.svg" alt="The Chain Hub" width={400} />
