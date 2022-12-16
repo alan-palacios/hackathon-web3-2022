@@ -58,8 +58,8 @@ export default function CardContract({ contract, ...defaultProps }: CardContract
 
 
 	return (
-		<div className="bg-dark3 w-80 h-80 flex flex-col p-5 m-3 rounded-lg">
-			<h1 className='text-xl font-medium italic'>{contract.meta.name}</h1>
+		<div className="bg-dark3 w-80 h-72 flex flex-col p-5 m-3 rounded-lg">
+			<h1 className='text-xl font-bold italic mb-2'>{contract.meta.name}</h1>
 			<div className='flex flex-row font-light items-center'>
 				<span className='mr-2'>
 					{shortenHex(contract.id)}
@@ -72,11 +72,11 @@ export default function CardContract({ contract, ...defaultProps }: CardContract
 					<Icon icon="akar-icons:copy" className='text-yellow hover:cursor-pointer' width={20} onClick={() => copyText(" ")} />
 				}
 			</div>
-			<span>{contract.meta.description}</span>
-			<div className='flex flex-row justify-between font-light text-sm'>
+			<span className='mb-2'>{contract.meta.description}</span>
+			<div className='flex flex-row justify-between font-light text-sm mb-1'>
 				<div className='flex flex-row'>
-					<Icon icon="mdi-light:account pl-2" width={20} />
-					<span className='ml-1'>{shortenHex(contract.createdBy)}</span>
+					<Icon icon="mdi-light:account" width={20} />
+					<span className='ml-1 mr-2'>{shortenHex(contract.createdBy)}</span>
 					{isCopiedCreator ?
 						<div className='flex flex-row'>
 							<Icon icon="akar-icons:check" className='text-yellow' width={20} onClick={() => copyText("creator")} />
@@ -91,7 +91,7 @@ export default function CardContract({ contract, ...defaultProps }: CardContract
 				<Icon icon="mdi-light:link-variant" width={20} />
 				<span className='ml-1'>{contract.meta.link}</span>
 			</div>
-			<div className='flex justify-center'>
+			<div className='flex justify-center mt-5'>
 				<Button label="Open" width="40" color="purple" onClick={() => readDataFrom(contract.meta.link)} />
 			</div>
 		</div>
