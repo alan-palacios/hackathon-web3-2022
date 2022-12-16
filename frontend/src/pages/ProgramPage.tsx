@@ -3,13 +3,12 @@ import Input from "components/Input";
 import { Select } from "components/Select";
 import { useReadConfig } from "hooks/useReadConfig";
 import { useEffect, useMemo, useState } from "react";
-import { Icon } from '@iconify/react';
 import Button from "components/Button";
 import { Link, useParams } from "react-router-dom";
 import CardContract from "components/CardContract";
 
 export default function ProgramPage() {
-	const {id } = useParams();
+	const { id } = useParams();
 	const [selectValue, setSelectValue] = useState('GetById');
 	const [search, setSearch] = useState('');
 	const [programId, setProgramId] = useState('');
@@ -29,13 +28,13 @@ export default function ProgramPage() {
 		window.open(urlLink);
 	};
 
-	const getElementValue = ()=>{
-		if(stateAll.state?.Record == null ){
+	const getElementValue = () => {
+		if (stateAll.state?.Record == null) {
 			return <span>Empty</span>
 		}
 		const contract = stateAll.state.Record;
 		return (
-			<div className="">
+			<div className="w-full h-full flex flex-col justify-center items-center space-y-5">
 				<div>
 					<span>Name:</span>
 					<span>{contract.id}</span>
@@ -60,10 +59,9 @@ export default function ProgramPage() {
 					<span>Tags:</span>
 					<span>{contract.id}</span>
 				</div>
-				<CardContract contract={contract} />
 				<div className="flex justify-center">
 					<Button label="Open" width="40" color="purple" onClick={() => readDataFrom(contract.meta.link)} />
-				</div> 
+				</div>
 			</div>
 		)
 	}

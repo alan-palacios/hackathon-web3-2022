@@ -108,9 +108,9 @@ export default function CardContract({ contract, ...defaultProps }: CardContract
 					<Icon icon="akar-icons:copy" className='text-yellow hover:cursor-pointer' width={20} onClick={() => copyText("link")} />
 				}
 			</div>
-			<div className='flex justify-center mt-5'>
+			<div className='flex justify-center mt-5 space-x-5'>
 				<Link to={`/program/${contract.id}`}>
-					<Button label="Info" width="40" color="purple"  />
+					<Button label="Info" width="40" color="purple" />
 				</Link>
 				<Button label="Open" width="40" color="purple" onClick={() => readDataFrom(contract.meta.link)} />
 			</div>
