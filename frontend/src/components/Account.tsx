@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useAccount } from '@gear-js/react-hooks';
 import { ReactComponent as userSVG } from 'assets/images/icons/login.svg';
 import { Button } from '@gear-js/ui';
-import { AccountsModal } from './layout/header/account/accounts-modal';
-import { Wallet } from './layout/header/account/wallet';
+import Wallet from './Wallet';
+import AccountsModal from './AccountsModal';
 
 export default function Account() {
   const { account, accounts } = useAccount();

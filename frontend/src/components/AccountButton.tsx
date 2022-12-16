@@ -10,7 +10,7 @@ type Props = {
   block?: boolean;
 };
 
-function AccountButton({ address, name, onClick, isActive, block }: Props) {
+export default function AccountButton({ address, name, onClick, isActive, block }: Props) {
   const className = clsx(
     buttonStyles.button,
     buttonStyles.medium,
@@ -25,5 +25,3 @@ function AccountButton({ address, name, onClick, isActive, block }: Props) {
     </button>
   );
 }
-
-export { AccountButton };

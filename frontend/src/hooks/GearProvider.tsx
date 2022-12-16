@@ -1,7 +1,6 @@
 import {
   ApiProvider as GearApiProvider,
   AlertProvider as GearAlertProvider,
-  AccountProvider,
   ProviderProps,
 } from '@gear-js/react-hooks';
 import { Alert, alertStyles } from '@gear-js/ui';
@@ -10,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ADDRESS } from 'consts';
 
 function ApiProvider({ children }: ProviderProps) {
-  return <GearApiProvider providerAddress={ADDRESS.NODE}>{children}</GearApiProvider>;
+  return <GearApiProvider providerAddress={ADDRESS}>{children}</GearApiProvider>;
 }
 
 function AlertProvider({ children }: ProviderProps) {
@@ -21,7 +20,7 @@ function AlertProvider({ children }: ProviderProps) {
   );
 }
 
-const providers = [BrowserRouter, AlertProvider, ApiProvider, AccountProvider];
+const providers = [BrowserRouter, AlertProvider, ApiProvider];
 
 function withProviders(Component: ComponentType) {
   return () => providers.reduceRight((children, Provider) => <Provider>{children}</Provider>, <Component />);

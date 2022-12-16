@@ -1,13 +1,13 @@
 import type { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 import { Modal } from '@gear-js/ui';
-import { Accounts } from '../accounts';
+import Accounts from './Accounts';
 
 type Props = {
   accounts: InjectedAccountWithMeta[] | undefined;
   close: () => void;
 };
 
-function AccountsModal({ accounts, close }: Props) {
+export default function AccountsModal({ accounts, close }: Props) {
   return (
     <Modal heading="Connect" close={close}>
       {accounts ? (
@@ -24,5 +24,3 @@ function AccountsModal({ accounts, close }: Props) {
     </Modal>
   );
 }
-
-export { AccountsModal };

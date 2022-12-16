@@ -1,15 +1,15 @@
 import type { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 import { useAccount } from '@gear-js/react-hooks';
-import { isLoggedIn } from 'utils';
+import isLoggedIn from 'utils';
 import { LOCAL_STORAGE } from 'consts';
-import { AccountButton } from '../account-button';
+import AccountButton from './AccountButton';
 
 type Props = {
 	list: InjectedAccountWithMeta[];
 	onChange: () => void;
 };
 
-function Accounts({ list, onChange }: Props) {
+export default function Accounts({ list, onChange }: Props) {
 	const { switchAccount } = useAccount();
 	const isAnyAccount = list.length > 0;
 
@@ -41,5 +41,3 @@ function Accounts({ list, onChange }: Props) {
 		</p>
 	);
 }
-
-export { Accounts };

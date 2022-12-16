@@ -1,10 +1,9 @@
-import { Socials } from './socials';
-import { Copyright } from './copyright';
-import styles from './Footer.module.scss';
+import Copyright from './Copyright';
+import Socials from './Socials';
 
 export default function Footer() {
 	return (
-		<footer className={styles.footer}>
+		<footer className=''>
 			<Socials />
 			<Copyright />
 		</footer>

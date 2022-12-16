@@ -3,4 +3,4 @@ import { LOCAL_STORAGE } from 'consts';
 
 const isLoggedIn = ({ address }: InjectedAccountWithMeta) => localStorage[LOCAL_STORAGE.ACCOUNT] === address;
 
-export { isLoggedIn };
+export default isLoggedIn;

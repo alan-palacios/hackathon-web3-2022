@@ -1,9 +1,10 @@
 import { useApi, useAccount } from '@gear-js/react-hooks';
 import { Routing } from 'pages';
-import { withProviders } from 'hocs';
 import 'App.css';
-import { Header } from 'components/layout/header/Header';
-import Footer from 'components/layout/footer/Footer';
+import Footer from 'components/Footer';
+import Header from 'components/Header';
+import { withProviders } from 'hooks/GearProvider';
+
 export default function Component() {
 	const { isApiReady } = useApi();
 	const { isAccountReady } = useAccount();
@@ -13,8 +14,7 @@ export default function Component() {
 	return (
 		<>
 			<Header isAccountVisible={isAccountReady} />
-			<main>{isAppReady ? <Routing /> : <span>Loading...</span>
-			}</main>
+			<main>{isAppReady ? <Routing /> : (<span>Loading...</span>) }</main>
 			<Footer />
 		</>
 	);

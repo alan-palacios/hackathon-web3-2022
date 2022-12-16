@@ -2,7 +2,6 @@ import { ReactComponent as Twitter } from 'assets/images/socials/twitter.svg';
 import { ReactComponent as Github } from 'assets/images/socials/github.svg';
 import { ReactComponent as Discord } from 'assets/images/socials/discord.svg';
 import { ReactComponent as Medium } from 'assets/images/socials/medium.svg';
-import styles from './Socials.module.scss';
 
 const socials = [
   { href: 'https://twitter.com/gear_techs', icon: Twitter },
@@ -21,5 +20,5 @@ export default function Socials() {
       </li>
     ));
 
-  return <ul className={styles.socials}>{getItems()}</ul>;
+  return <ul className=''>{getItems()}</ul>;
 }

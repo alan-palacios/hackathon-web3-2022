@@ -1,11 +1,11 @@
-import { Logo } from './logo';
-import { Account } from './account';
+import Account from "./Account";
+import Logo from "./Logo";
 
 type Props = {
 	isAccountVisible: boolean;
 };
 
-function Header({ isAccountVisible }: Props) {
+export default function Header({ isAccountVisible }: Props) {
 	return (
 		<header className="">
 			<Logo />
@@ -13,5 +13,3 @@ function Header({ isAccountVisible }: Props) {
 		</header>
 	);
 }
-
-export { Header };
