@@ -2,6 +2,14 @@
 
 use gstd::{prelude::*, ActorId};
 
+#[derive(Debug, Default, Encode, Decode, PartialEq, Eq, PartialOrd, Ord, Clone, TypeInfo)]
+pub struct DnsMeta {
+    pub name: String,
+    pub link: String,
+    pub description: String,
+}
+
+
 #[derive(Debug, Decode, Encode, TypeInfo)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
