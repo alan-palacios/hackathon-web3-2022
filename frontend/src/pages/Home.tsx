@@ -48,9 +48,6 @@ export default function Home() {
 
 	return (
 		<div className="flex flex-col justify-center bg-gradient-to-b from-dark1 to-dark2 min-h-full h-full">
-      <div className="ml-5 mt-2">
-        <Button label="VIEW CONTRACT TEMPLATE"/>
-      </div>
 			<div className="flex flex-col items-center">
 				<div className="mt-20 mb-5">
 					<img src="static/logo.svg" alt="The Chain Hub" width={400} />
@@ -59,15 +56,15 @@ export default function Home() {
 					<Button label="AGREGAR CONTRATO" color="purple" />
 				</Link>
 				<div className="text-xl mt-5">
-          Where DApps meet
+					Where DApps meet
 				</div>
 			</div>
 			<div className="w-full flex flex-col justify-center items-center mt-10">
 				<div className="flex items-center space-x-2">
 					<Input value={search} onChange={setSearch} />
-          <div className="bg-purple rounded-md py-2 px-3">
-            <Icon icon="il:search" width={15} />
-          </div>
+					<div className="bg-purple rounded-md py-2 px-3">
+						<Icon icon="il:search" width={15} />
+					</div>
 				</div>
 				<Select handleSelectedValue={setSelectValue} />
 			</div>
