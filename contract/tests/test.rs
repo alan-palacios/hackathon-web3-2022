@@ -1,10 +1,12 @@
+use gstd::{ActorId};
 use gtest::{Log, Program, System};
+
+const ID: u64 = 100;
+
 #[test]
-fn send_ping(){
+fn init_test(){
     let sys = System::new();
     sys.init_logger();
-    let contract = Program::current(&sys);
-    let ping_pong_id = contract.id();
-    let res = contract.send_bytes(1, "INIT MESSAGE");
-    let res = contract.send_bytes(1, "PING");
+    let dns = Program::current(&sys);
+    dns.send(2, String::from("Init"));
 }
