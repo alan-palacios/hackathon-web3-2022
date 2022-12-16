@@ -13,9 +13,9 @@ type Props = {
 function Select({ handleSelectedValue }: Props) {
 
 	return (
-		<div className='bg-neutral-700 flex p-2 items-center space-x-2'>
-			<h4 className=''>Filter by: </h4>
-			<select className='bg-neutral-700 border-black border-2' onChange={(e) => handleSelectedValue(e.currentTarget.value)}>
+		<div className='flex p-2 items-center space-x-2 mb-5'>
+			<h4 className='mr-3'>Filter by: </h4>
+			<select className='bg-dark2' onChange={(e) => handleSelectedValue(e.currentTarget.value)}>
 				{
 					Object.entries(ACTIONS).map(action => <option key={action[0]} value={action[0]}>{action[1]}</option>)
 				}
