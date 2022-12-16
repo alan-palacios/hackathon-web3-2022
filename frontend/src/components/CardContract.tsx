@@ -98,7 +98,7 @@ export default function CardContract({ contract, ...defaultProps }: CardContract
 			</div>
 			<div className='flex flex-row font-light text-sm'>
 				<Icon icon="mdi-light:link-variant" width={20} />
-				<span className='ml-1 pl-5'> {shortenHex(contract.meta.link)}</span>
+				<span className='ml-1 mr-2'> {shortenHex(contract.meta.link)}</span>
 				{isCopiedLink ?
 					<div className='flex flex-row'>
 						<Icon icon="akar-icons:check" className='text-yellow' width={20} onClick={() => copyText("link")} />
