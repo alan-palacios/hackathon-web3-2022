@@ -1,8 +1,8 @@
 [package]
 name = "dns"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
-authors = ["Gear Technologies"]
+authors = ["Nice Friendly Tyrannosaurs"]
 
 [dependencies]
 gstd = { git = "https://github.com/gear-tech/gear.git", branch = "stable" }
@@ -12,3 +12,6 @@ dns-io = { path = "io" }
 
 [build-dependencies]
 gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git" }
+
+[dev-dependencies]
+gtest = { git = "https://github.com/gear-tech/gear.git", branch = "stable" }
