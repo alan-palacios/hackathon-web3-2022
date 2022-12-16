@@ -1,47 +1,85 @@
 #![no_std]
 
-use gstd::{debug, msg, prelude::*};
+use ft_logic_io::Action;
+use gstd::{debug, msg,exec, metadata, async_main, prelude::*, util, ActorId};
+mod io;
+pub use io::*;
+static mut CONTRACT: Option<Pong> = None;
+static mut DNS_META: Option<DnsMeta> = None;
 
-static mut MESSAGE_LOG: Vec<String> = vec![];
+
+#[derive(Default, Debug)]
+struct Pong {
+    admin: ActorId,
+    new_msg:String
+}
 
 #[no_mangle]
-unsafe extern "C" fn handle() {
-    let new_msg = String::from_utf8(msg::load_bytes().expect("Unable to load bytes"))
-        .expect("Invalid message");
+unsafe extern "C" fn init() {
 
-    if new_msg == "PING" {
-        msg::reply_bytes("PONG", 0).unwrap();
+    let PONGInit { admin, new_msg } = msg::load().expect("failed to decode PONGInit");
+
     }
 
-    MESSAGE_LOG.push(new_msg);
+    let contract = Pong{
+        admin,
+        new_msg,
+        ..Default::default()
+    };
 
-    debug!("{:?} total message(s) stored: ", MESSAGE_LOG.len());
 
-    for log in MESSAGE_LOG.iter() {
-        debug!(log);
-    }
+    unsafe { CONTRACT = Some(contract)}
+
 }
 
-/// and a simple unit test:
+#[async_main]
+async fn main() {
+    let action: PONGAction = msg::load().expect("Failed to load or decode `PONGAction`");
+    let contract = contract();
 
-#[cfg(test)]
-mod tests {
-    extern crate std;
+    let event = match action {
+        PONGAction::GetPong(text)=>{
+            return PONGEvent::
+        },
+        PONGAction::GetDnsMeta => unsafe { PONGEvent::DnsMeta(DNS_META.clone()) },
+        PONGAction::SetDnsMeta(meta) => unsafe {
+            if contract.admin != msg::source() {
+                panic!("Dns metadata can be added only by admin")
+            }
+            DNS_META = Some(meta);
+            return PONGEvent::DnsMeta(DNS_META.clone())
+        }
+    };
 
-    use gtest::{Log, Program, System};
-
-    #[test]
-    fn it_works() {
-        let system = System::new();
-        system.init_logger();
-
-        let program = Program::current(&system);
-
-        let res = program.send_bytes(42, "INIT");
-        assert!(res.log().is_empty());
-
-        let res = program.send_bytes(42, "PING");
-        let log = Log::builder().source(1).dest(42).payload_bytes("PONG");
-        assert!(res.contains(&log));
-    }
+    msg::reply(event, 0).expect("Failed to encode or reply with `PONGEvent`");
 }
+
+#[no_mangle]
+extern "C" fn meta_state() -> *mut [i32; 2] {
+    let Pong {
+        admin,
+        ..
+    } = contract();
+
+    let reply = PONGState {
+        admin: *admin,
+    };
+
+    util::to_leak_ptr(reply.encode())
+}
+
+fn contract() -> &'static mut Pong {
+    unsafe { CONTRACT.get_or_insert(Default::default()) }
+}
+
+metadata! {
+    title: "DNS test",
+    init:
+        input: PONGInit,
+    handle:
+        input: PONGAction,
+        output: PONGEvent,
+    state:
+        output: PONGState,
+}
+

@@ -1,7 +1,7 @@
 use gstd::{prelude::*, ActorId};
 
 #[derive(Debug, Default, Encode, Decode, PartialEq, Eq, PartialOrd, Ord, Clone, TypeInfo)]
-pub struct GOCInit {
+pub struct DNSInit {
     pub admin: ActorId,
 }
 
@@ -13,17 +13,17 @@ pub struct DnsMeta {
 }
 
 #[derive(Debug, Encode, Decode, PartialEq, Eq, PartialOrd, Ord, Clone, TypeInfo)]
-pub enum GOCAction {
+pub enum DNSAction {
     GetDnsMeta,
     SetDnsMeta(DnsMeta),
 }
 
 #[derive(Debug, Encode, Decode, PartialEq, Eq, PartialOrd, Ord, Clone, TypeInfo)]
-pub enum GOCEvent {
+pub enum DNSEvent {
     DnsMeta(Option<DnsMeta>),
 }
 
 #[derive(Debug, Default, Encode, Decode, PartialEq, Eq, PartialOrd, Ord, Clone, TypeInfo)]
-pub struct GOCState {
+pub struct DNSState {
     pub admin: ActorId,
 }

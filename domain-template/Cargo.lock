@@ -188,6 +188,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "dns-scaffold"
+version = "0.1.0"
+dependencies = [
+ "ft-logic-io",
+ "ft-main-io",
+ "gear-wasm-builder",
+ "gstd",
+ "gtest",
+ "parity-scale-codec",
+ "rand",
+ "rand_xoshiro",
+ "scale-info",
+]
+
+[[package]]
 name = "downcast-rs"
 version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -317,21 +332,6 @@ version = "0.1.0"
 source = "git+https://github.com/gear-tech/gear.git?branch=stable#b839f4d8d4693011b62213fde7d729f387a0f954"
 dependencies = [
  "dlmalloc",
-]
-
-[[package]]
-name = "game-of-chance"
-version = "0.1.0"
-dependencies = [
- "ft-logic-io",
- "ft-main-io",
- "gear-wasm-builder",
- "gstd",
- "gtest",
- "parity-scale-codec",
- "rand",
- "rand_xoshiro",
- "scale-info",
 ]
 
 [[package]]

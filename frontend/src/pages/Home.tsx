@@ -5,6 +5,7 @@ import { useReadConfig } from "hooks/useReadConfig";
 import { useEffect, useMemo, useState } from "react";
 import { Icon } from '@iconify/react';
 import Button from "components/Button";
+import CardContract from "components/CardContract";
 
 export default function Home() {
 	const [selectValue, setSelectValue] = useState('GetAll');
@@ -68,6 +69,9 @@ export default function Home() {
 				</div>
 				<Select handleSelectedValue={setSelectValue} />
 			</div>
+      <div>
+        <CardContract/>
+      </div>
 			{stateAll.isStateRead ? (
 				<div>
 					{getElementValue}

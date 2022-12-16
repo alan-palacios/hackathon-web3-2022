@@ -1,5 +1,5 @@
 [package]
-name = "game-of-chance"
+name = "dns-scaffold"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"

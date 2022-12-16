@@ -89,12 +89,16 @@ export default function RegisterProgram() {
 
 				const keyring = await GearKeyring.fromSuri('//Alice');
 				// In that case payload will be encoded using meta.handle_input type
-				let extrinsic = api.message.send(message, dnsMeta);
+				const extrinsic = api.message.send(message, dnsMeta);
 				// So if you want to use another type you can specify it
-				extrinsic = api.message.send(message, dnsMeta, dnsMeta.async_handle_input);
+				// extrinsic = api.message.send(message, dnsMeta, dnsMeta.async_handle_input);
 
 				await extrinsic.signAndSend(keyring, (event) => {
 					console.log(event.toHuman());
+					console.log('message sent!');
+				}).then(()=>{
+					console.log('message received');
+					
 				});
 			}
 		} catch (error: any) {
