@@ -18,7 +18,7 @@ pub struct DnsMeta {
     pub category: String,
     pub tags: String,
     pub date: String,
-    pub image: String,
+    pub image: String, //Optional
 }
 ```
 
