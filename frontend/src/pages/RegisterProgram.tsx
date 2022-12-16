@@ -10,6 +10,8 @@ import { useState } from 'react'
 import { dnsMeta } from 'out/metaTypes';
 import { toast } from 'react-toastify';
 import { GearKeyring } from '@gear-js/api';
+import { Link } from 'react-router-dom';
+import Button from 'components/Button';
 
 export default function RegisterProgram() {
 	const { api } = useApi();
@@ -98,7 +100,6 @@ export default function RegisterProgram() {
 					console.log('message sent!');
 				}).then(()=>{
 					console.log('message received');
-					
 				});
 			}
 		} catch (error: any) {
@@ -108,6 +109,9 @@ export default function RegisterProgram() {
 
 	return (
 		<div className="bg-neutral-700 flex flex-col justify-center w-full items-center">
+			<Link to='/'>
+				<Button label="REGRESAR" />
+			</Link>
 			<span>Register Program</span>
 			<Input value={registerProgramId} onChange={setRegisterProgramId} />
 			<button onClick={registerHandler} type='button'
