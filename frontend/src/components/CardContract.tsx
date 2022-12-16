@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useEffect, useMemo, useState } from 'react'
 import { Icon } from '@iconify/react';
 import { ElementType } from 'types';
@@ -108,6 +109,9 @@ export default function CardContract({ contract, ...defaultProps }: CardContract
 				}
 			</div>
 			<div className='flex justify-center mt-5'>
+				<Link to={`/program/${contract.id}`}>
+					<Button label="Info" width="40" color="purple"  />
+				</Link>
 				<Button label="Open" width="40" color="purple" onClick={() => readDataFrom(contract.meta.link)} />
 			</div>
 		</div>

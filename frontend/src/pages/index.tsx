@@ -1,12 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import HowTo from './HowTo';
+import ProgramPage from './ProgramPage';
 import RegisterProgram from './RegisterProgram';
 
 const routes = [
 	{ path: '/', Page: Home },
 	{ path: '/register', Page: RegisterProgram },
-	{ path: '/howto', Page: HowTo }
+	{ path: '/howto', Page: HowTo },
+	{ path: '/program/:id', Page: ProgramPage }
 ];
 
 function Routing() {
