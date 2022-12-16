@@ -5,17 +5,18 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { withProviders } from 'hooks/GearProvider';
 
-export default function Component() {
+function Component() {
 	const { isApiReady } = useApi();
-	// const { isAccountReady } = useAccount();
-	// <Header isAccountVisible={isAccountReady} />
+	const { isAccountReady, account } = useAccount();
 
 	const isAppReady = isApiReady;
 
 	return (
 		<>
-			<Header isAccountVisible />
-				<main>{isAppReady ? <Routing /> : (<span>Loading...</span>) }</main>
+			<Header isAccountVisible={isAccountReady} />
+				<main>
+					{isAppReady ? <Routing /> : (<span>Loading...</span>) }
+				</main>
 			<Footer />
 		</>
 	);
