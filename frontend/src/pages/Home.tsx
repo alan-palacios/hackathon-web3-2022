@@ -62,7 +62,7 @@ export default function Home() {
 					<Button label="AGREGAR CONTRATO" />
 				</Link>
 				<div className="text-xl">
-					Where blocks connect
+          Where DApps meet
 				</div>
 			</div>
 			<div className="w-full flex flex-col justify-center items-center mt-10">
