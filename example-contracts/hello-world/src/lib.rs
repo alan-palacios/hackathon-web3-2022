@@ -1,6 +1,7 @@
 #![no_std]
 use gstd::{debug, msg, prelude::*, ActorId};
 
+
 #[derive(Encode, Decode, TypeInfo)]
 pub enum InputMessages {
     SendHelloTo(ActorId),
