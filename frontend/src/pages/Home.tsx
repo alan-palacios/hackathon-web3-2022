@@ -1,10 +1,10 @@
-import { Button } from "@gear-js/ui";
 import { bufferString } from "assets/metaBuffer";
 import Input from "components/Input";
 import { Select } from "components/Select";
 import { useReadConfig } from "hooks/useReadConfig";
 import { useEffect, useMemo, useState } from "react";
 import { Icon } from '@iconify/react';
+import Button from "components/Button";
 
 export default function Home() {
 	const [selectValue, setSelectValue] = useState('GetAll');
@@ -37,7 +37,7 @@ export default function Home() {
 						<span>{element.meta.description}</span>
 						<span>{element.createdBy}</span>
 						<span>{element.meta.link}</span>
-						<Button type="button" text="Open" size="small" onClick={() => readDataFrom(element.meta.link)} />
+						<Button label="Open" type="button" onClick={() => readDataFrom(element.meta.link)} />
 					</li>
 				))
 			) : (
@@ -48,34 +48,28 @@ export default function Home() {
 
 	return (
 		<div className="flex flex-col justify-center bg-gradient-to-b from-dark1 to-dark2 min-h-full h-full">
-      <div className="flex flex-col items-center">
-        <div className="mt-20 mb-5">
-          <img src="static/logo.svg" alt="The Chain Hub" width={400}/>
-        </div>
-        <div className="text-xl">
-          Where blocks connect
-        </div>
-        <Input value={search} onChange={setSearch} />
-      </div>
-      {stateAll.isStateRead ? (
-        <div>
-          {getElementValue}
-        </div>
-      ) : (
-        <span>Loading ...</span>
-      )}
-			<div className="bg-neutral-700">
-				<Select handleSelectedValue={setSelectValue} />
-				<Input value={search} onChange={setSearch} />
+			<div className="flex flex-col items-center">
+				<div className="mt-20 mb-5">
+					<img src="static/logo.svg" alt="The Chain Hub" width={400} />
+				</div>
+				<div className="text-xl">
+					Where blocks connect
+				</div>
 			</div>
 			<div className="bg-neutral-700 w-full flex flex-col justify-center items-center">
-				<div className="flex">
+				<div className="flex items-center space-x-2">
 					<Input value={search} onChange={setSearch} />
-					<Icon icon="mdi-light:search" />
+					<Icon icon="il:search" width={30} />
 				</div>
-
 				<Select handleSelectedValue={setSelectValue} />
 			</div>
+			{stateAll.isStateRead ? (
+				<div>
+					{getElementValue}
+				</div>
+			) : (
+				<span>Loading ...</span>
+			)}
 			{stateAll.isStateRead ? (
 				<div>
 					{getElementValue}

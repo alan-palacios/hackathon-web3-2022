@@ -1,5 +1,6 @@
 import React, { ButtonHTMLAttributes } from 'react'
 
+/* eslint-disable react/jsx-props-no-spreading */
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 	/** Button content */
   label: string
