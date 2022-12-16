@@ -3,7 +3,7 @@ import Socials from './Socials';
 
 export default function Footer() {
 	return (
-		<footer className='flex bg-black justify-between'>
+		<footer className='flex bg-dark2 justify-between items-center'>
 			<Socials />
 			<Copyright />
 		</footer>
