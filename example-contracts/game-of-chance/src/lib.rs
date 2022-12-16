@@ -268,7 +268,7 @@ fn contract() -> &'static mut Goc {
 }
 
 metadata! {
-    title: "Game of chance",
+    title: "Game Of Chance DNS",
     init:
         input: GOCInit,
     handle:
