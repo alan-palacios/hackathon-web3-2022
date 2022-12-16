@@ -25,6 +25,8 @@ module.exports = {
 
     'import/prefer-default-export': 'off',
 
+    'no-underscore-dangle': 'off',
+
     '@typescript-eslint/no-unused-vars': 'warn', // 'error' is not convinient in development
 
     'consistent-return': 'off', // we want functions to have different return behavior

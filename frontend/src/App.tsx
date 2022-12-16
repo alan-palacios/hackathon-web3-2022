@@ -4,6 +4,7 @@ import 'App.css';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { withProviders } from 'hooks/GearProvider';
+import { ToastContainer } from 'react-toastify';
 
 function Component() {
 	const { isApiReady } = useApi();
@@ -17,6 +18,7 @@ function Component() {
 				<main>
 					{isAppReady ? <Routing /> : (<span>Loading...</span>) }
 				</main>
+				<ToastContainer />
 			<Footer />
 		</div>
 	);
