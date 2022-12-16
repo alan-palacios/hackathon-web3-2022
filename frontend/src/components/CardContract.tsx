@@ -22,6 +22,7 @@ export default function CardContract({ contract, ...defaultProps }: CardContract
 
 	const [isCopied, setIsCopied] = useState(false)
 	const [isCopiedCreator, setIsCopiedCreator] = useState(false)
+	const [isCopiedLink, setIsCopiedLink] = useState(false)
 	const metaBuffer = useMemo(() => Buffer.from(bufferString, 'base64'), []);
 	const { stateAll } = useReadConfig(metaBuffer, selectValue, search);
 
@@ -37,6 +38,14 @@ export default function CardContract({ contract, ...defaultProps }: CardContract
 		} else if (type === " ") {
 			if (!isCopied) {
 				navigator.clipboard.writeText(contract.id);
+				setIsCopied(true)
+				setTimeout(() => {
+					setIsCopied(false)
+				}, 5000)
+			}
+		} else if (type === "link") {
+			if (!isCopied) {
+				navigator.clipboard.writeText(contract.meta.link);
 				setIsCopied(true)
 				setTimeout(() => {
 					setIsCopied(false)
@@ -85,11 +94,18 @@ export default function CardContract({ contract, ...defaultProps }: CardContract
 						<Icon icon="akar-icons:copy" className='text-yellow hover:cursor-pointer' width={20} onClick={() => copyText("creator")} />
 					}
 				</div>
-				<span>Date</span>
+				{/* <span>Date</span> */}
 			</div>
 			<div className='flex flex-row font-light text-sm'>
 				<Icon icon="mdi-light:link-variant" width={20} />
-				<span className='ml-1'>{contract.meta.link}</span>
+				<span className='ml-1 pl-5'> {shortenHex(contract.meta.link)}</span>
+				{isCopiedLink ?
+					<div className='flex flex-row'>
+						<Icon icon="akar-icons:check" className='text-yellow' width={20} onClick={() => copyText("link")} />
+					</div>
+					:
+					<Icon icon="akar-icons:copy" className='text-yellow hover:cursor-pointer' width={20} onClick={() => copyText("link")} />
+				}
 			</div>
 			<div className='flex justify-center mt-5'>
 				<Button label="Open" width="40" color="purple" onClick={() => readDataFrom(contract.meta.link)} />

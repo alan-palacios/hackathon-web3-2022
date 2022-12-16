@@ -14,7 +14,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Button({ label, className, width, color, ...defaultProps }: ButtonProps) {
 	return (
-		<button className={`bg-${color} px-10 w-${width} ${className} rounded-md py-1 flex font-semibold`}
+		<button className={`bg-purple px-10 w-${width} ${className} rounded-md py-1 flex font-semibold`}
 			{...defaultProps}>
 			{label}
 		</button>
