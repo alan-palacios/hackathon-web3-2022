@@ -150,7 +150,7 @@ gstd::metadata! {
         input: State,
         output: StateReply,
 }
-
+//DNS
 #[no_mangle]
 extern "C" fn handle() {
     let action: FTAction = msg::load().expect("Could not load Action");
@@ -158,14 +158,14 @@ extern "C" fn handle() {
 
     let contract = contract(); // DNS
 
-    match action {
-        FTAction::GetDnsMeta => unsafe { FTEvent::DnsMeta(DNS_META.clone()); }
+    let event = match action {
+        FTAction::GetDnsMeta => unsafe { FTEvent::DnsMeta(DNS_META.clone()); },
         FTAction::SetDnsMeta(meta) => unsafe {
-            if contract.admin != msg::source() {
-                panic!("Dns metadata can be added only by admin")
-            }
+            // if contract.admin != msg::source() {
+            //    panic!("Dns metadata can be added only by admin")
+            // }
             DNS_META = Some(meta);
-            FTEvent::DnsMeta(DNS_META.clone());
+            FTEvent::DnsMeta(DNS_META.clone());//DNS
         }
         FTAction::Mint(amount) => {
             ft.mint(amount);
@@ -186,16 +186,19 @@ extern "C" fn handle() {
             let balance = ft.balances.get(&account).unwrap_or(&0);
             msg::reply(FTEvent::Balance(*balance), 0).unwrap();
         }
-    }
-}
+    };
 
+    msg::reply(event, 0).expect("Failed to encode or reply with `FTEvent`");
+}
+//DNS
 #[no_mangle]
 extern "C" fn init() {
-    let config: InitConfig = msg::load().expect("Unable to decode InitConfig");
+    let config: InitConfig  = msg::load().expect("Unable to decode InitConfig");
     let ft = FungibleToken {
         name: config.name,
         symbol: config.symbol,
         decimals: config.decimals,
+        admin: config.admin,
         ..Default::default()
     };
     unsafe { FUNGIBLE_TOKEN = Some(ft) };

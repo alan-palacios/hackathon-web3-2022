@@ -1,5 +1,4 @@
 import Account from "./Account";
-import Logo from "./Logo";
 
 type Props = {
 	isAccountVisible: boolean;
@@ -7,8 +6,7 @@ type Props = {
 
 export default function Header({ isAccountVisible }: Props) {
 	return (
-		<header className="">
-			<Logo />
+		<header className="text-right">
 			{isAccountVisible && <Account />}
 		</header>
 	);

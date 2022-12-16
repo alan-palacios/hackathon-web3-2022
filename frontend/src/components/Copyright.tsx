@@ -1,4 +1,3 @@
 export default function Copyright() {
-	const year = new Date().getFullYear();
-	return <small >{year}. All rights reserved.</small>;
+	return <small>Nice Friendly Tyrannosaurs | Gear Hackathon Web3 2022</small>;
 }
