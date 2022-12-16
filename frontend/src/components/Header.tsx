@@ -6,7 +6,7 @@ type Props = {
 
 export default function Header({ isAccountVisible }: Props) {
 	return (
-		<header className="text-right">
+		<header className="flex justify-end pr-5">
 			{isAccountVisible && <Account />}
 		</header>
 	);
