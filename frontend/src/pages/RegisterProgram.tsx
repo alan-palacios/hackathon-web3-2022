@@ -30,7 +30,6 @@ export default function RegisterProgram() {
 		try {
 			const event = await updateProgram(updateProgramId);
 			console.log(event);
-			toast.success('Metadata Actualizada');
 		} catch (error: any) {
 			console.error(`${error.name}: ${error.message}`);
 		}
@@ -44,7 +43,6 @@ export default function RegisterProgram() {
 		try {
 			const event = await registerProgram(registerProgramId);
 			console.log(event);
-			toast.success('Programa Registrado!');
 		} catch (error: any) {
 			toast.error('An Error occured during transaction');
 			// console.error(`${error.name}: ${error.message}`);
@@ -59,7 +57,6 @@ export default function RegisterProgram() {
 		try {
 			const event = await removeProgram(removeProgramId);
 			console.log(event);
-			toast.success('Registro Eliminado');
 		} catch (error: any) {
 			console.error(`${error.name}: ${error.message}`);
 		}

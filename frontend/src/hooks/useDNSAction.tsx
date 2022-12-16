@@ -1,5 +1,5 @@
 import { GearKeyring } from "@gear-js/api";
-import { useAccount, useApi } from "@gear-js/react-hooks";
+import { useAccount, useApi, useSendMessage } from "@gear-js/react-hooks";
 import { CONTRACT_ID } from "consts";
 import { dnsMeta } from "out/metaTypes";
 import { toast } from "react-toastify";
@@ -9,42 +9,29 @@ export function useDNSAction() {
 	const {calculateGas} = useCalculateGas();
 	const { api } = useApi();
   const { account } = useAccount();
-	console.log(account);
 	const addressAux = '0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d';
+	const sendMessage = useSendMessage(CONTRACT_ID, dnsMeta);
+	// const seed = '0x496f9222372eca011351630ad276c7d44768a593cecea73685299e06acef8c0a';
+	// const keyring = await GearKeyring.fromSeed(seed, 'name');
 
-	const sendMessage = async (message: any)=>{
+	const sendMessageHandler = async (payload: any, onSuccess: ()=>void | undefined)=>{
 		if (account) {
-			console.log(account.decodedAddress);
-			const gas = await calculateGas(message, account.decodedAddress);
-			if (gas==null || gas.min_limit==null) {
-				toast.error('Cannot calculate gas');
-				return;
-			}
-			message.gasLimit = gas.min_limit.toString();
-
-			const keyring = await GearKeyring.fromSuri('//Alice');
-			// In that case payload will be encoded using meta.handle_input type
-			const extrinsic = api.message.send(message, dnsMeta);
-			// So if you want to use another type you can specify it
-			// extrinsic = api.message.send(message, dnsMeta, dnsMeta.async_handle_input);
-
-			const event = await extrinsic.signAndSend(keyring);
-			return event.toHuman();
+			sendMessage(payload, {onSuccess})
 		}
 	}
 
 	const registerProgram = async (programId: string)=>{
 		console.log(`register program ${programId}`);
 		try {
-			const message = {
-				destination: CONTRACT_ID,
-				payload: {
-					register: programId,
-				},
-				gasLimit: '300000000',
-				value: '0',
-			};
-			return await sendMessage(message);	
+			const payload = {
+				register: programId,
+			}
+			return await sendMessageHandler(
+				payload,
+				()=>{
+					toast.success('Programa Registrado');
+				}
+			);	
 		} catch (error: any) {
 			console.error(`${error.name}: ${error.message}`);
 			throw new Error(error);
@@ -54,15 +41,15 @@ export function useDNSAction() {
 	const updateProgram = async (programId: string)=>{
 		console.log(`update program ${programId}`);
 		try {
-			const message = {
-				destination: CONTRACT_ID,
-				payload: {
-					update: programId,
-				},
-				gasLimit: '300000000',
-				value: '0',
-			};
-			return await sendMessage(message);	
+			const payload = {
+				update: programId,
+			}
+			return await sendMessageHandler(
+				payload,
+				()=>{
+					toast.success('Programa Actualizado');
+				}
+			);	
 		} catch (error: any) {
 			console.error(`${error.name}: ${error.message}`);
 			throw new Error(error);
@@ -73,15 +60,15 @@ export function useDNSAction() {
 	const removeProgram = async (programId: string)=>{
 		console.log(`remove program ${programId}`);
 		try {
-			const message = {
-				destination: CONTRACT_ID,
-				payload: {
-					remove: programId,
-				},
-				gasLimit: '300000000',
-				value: '0',
-			};
-			return await sendMessage(message);	
+			const payload = {
+				remove: programId,
+			}
+			return await sendMessageHandler(
+				payload,
+				()=>{
+					toast.success('Programa eliminado');
+				}
+			);	
 		} catch (error: any) {
 			console.error(`${error.name}: ${error.message}`);
 			throw new Error(error);
