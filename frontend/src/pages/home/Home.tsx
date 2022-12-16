@@ -1,5 +1,9 @@
 function Home() {
-	return <div>Indicare</div>;
+	return (
+		<div className="flex justify-center">
+			<p className="italic">Indicare</p>
+		</div>
+	)
 }
 
 export { Home };
