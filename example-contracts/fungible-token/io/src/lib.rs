@@ -2,6 +2,14 @@
 
 use gstd::{prelude::*, ActorId};
 
+// DNS
+#[derive(Debug, Default, Encode, Decode, PartialEq, Eq, PartialOrd, Ord, Clone, TypeInfo)]
+pub struct DnsMeta {
+    pub name: String,
+    pub link: String,
+    pub description: String,
+}
+
 #[derive(Debug, Decode, Encode, TypeInfo)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
@@ -15,6 +23,8 @@ pub struct InitConfig {
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
 pub enum FTAction {
+    GetDnsMeta, // DNS
+    SetDnsMeta(DnsMeta), // DNS
     Mint(u128),
     Burn(u128),
     Transfer {
@@ -34,6 +44,7 @@ pub enum FTAction {
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
 pub enum FTEvent {
+    DnsMeta(Option<DnsMeta>), // DNS
     Transfer {
         from: ActorId,
         to: ActorId,

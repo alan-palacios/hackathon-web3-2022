@@ -1,7 +1,7 @@
 #![no_std]
 
 use dns_io::*;
-use gstd::{async_main, msg, prelude::*, util, ActorId, Vec};
+use gstd::{async_main, msg, prelude::*, util, ActorId, Vec, debug};
 
 static mut RECORDS: Vec<DnsRecord> = Vec::new();
 
@@ -143,6 +143,12 @@ async unsafe fn main() {
         };
         msg::reply_with_gas(result, 0, 0).expect("Error in sending a reply");
     }
+}
+
+#[no_mangle]
+unsafe extern "C" fn init() {
+    let init_message: String = msg::load().expect("Can't load init message");
+    debug!("Program was initializated with message {:?}", init_message);
 }
 
 #[no_mangle]
