@@ -63,30 +63,33 @@ export default function RegisterProgram() {
 	}
 
 	return (
-		<div className="bg-neutral-700 flex flex-col justify-center w-full items-center
-		py-10">
-			<Link to='/'>
-				<Button label="REGRESAR" />
-			</Link>
-			<div className='w-full max-w-lg flex flex-col justify-center items-center space-y-10 mt-10 '>
-				<div className='w-full flex flex-col justify-center items-start'>
-					<span>Agregar Programa</span>
-					<Input value={registerProgramId} onChange={setRegisterProgramId} />
-					<Button onClick={registerHandler} label='Agregar' />
-				</div>
+		<div className='w-full flex justify-center'>
+			<div className="bg-dark3 flex flex-col justify-center w-1/2 items-center rounded-lg
+			py-10">
+				<Link to='/'>
+					<Button label="REGRESAR" />
+				</Link>
+				<div className='w-full max-w-lg flex flex-col justify-center items-center space-y-10 mt-10 '>
+					<div className='w-full flex flex-col justify-center items-start'>
+						<span>Agregar Programa</span>
+						<Input value={registerProgramId} onChange={setRegisterProgramId} />
+						<Button onClick={registerHandler} label='Agregar' />
+					</div>
 
-				<div className='w-full flex flex-col justify-center items-start'>
-					<span>Actualizar Metadata</span>
-					<Input value={updateProgramId} onChange={setUpdateProgramId} />
-					<Button onClick={updateHandler} label='Update' />
-				</div>
+					<div className='w-full flex flex-col justify-center items-start'>
+						<span>Actualizar Metadata</span>
+						<Input value={updateProgramId} onChange={setUpdateProgramId} />
+						<Button onClick={updateHandler} label='Update' />
+					</div>
 
-				<div className='w-full flex flex-col justify-center items-start'>
-					<span>Remove Program</span>
-					<Input value={removeProgramId} onChange={setRemoveProgramId} />
-					<Button onClick={removeHandler} label='Eliminar' />
+					<div className='w-full flex flex-col justify-center items-start'>
+						<span>Remove Program</span>
+						<Input value={removeProgramId} onChange={setRemoveProgramId} />
+						<Button onClick={removeHandler} label='Eliminar' />
+					</div>
 				</div>
 			</div>
 		</div>
+		
 	)
 }

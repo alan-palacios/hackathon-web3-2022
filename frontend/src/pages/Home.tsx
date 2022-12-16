@@ -56,15 +56,15 @@ export default function Home() {
 					<Button label="AGREGAR CONTRATO" color="purple" />
 				</Link>
 				<div className="text-xl mt-5">
-          Where DApps meet
+					Where DApps meet
 				</div>
 			</div>
 			<div className="w-full flex flex-col justify-center items-center mt-10">
 				<div className="flex items-center space-x-2">
 					<Input value={search} onChange={setSearch} />
-          <div className="bg-purple rounded-md py-2 px-3">
-            <Icon icon="il:search" width={15} />
-          </div>
+					<div className="bg-purple rounded-md py-2 px-3">
+						<Icon icon="il:search" width={15} />
+					</div>
 				</div>
 				<Select handleSelectedValue={setSelectValue} />
 			</div>
