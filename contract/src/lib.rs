@@ -145,11 +145,7 @@ async unsafe fn main() {
     }
 }
 
-#[no_mangle]
-unsafe extern "C" fn init() {
-    let init_message: String = msg::load().expect("Can't load init message");
-    debug!("Program was initializated with message {:?}", init_message);
-}
+
 
 #[no_mangle]
 pub unsafe extern "C" fn meta_state() -> *mut [i32; 2] {
