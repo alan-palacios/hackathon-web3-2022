@@ -26,7 +26,7 @@ export default function Header({ isAccountVisible }: Props) {
 				<Link to='/howto' className="mt-2">
 					<Button label="HOW TO" color="purple" />
 				</Link>
-				<Link to='/' className="mt-2">
+				<Link to='/about' className="mt-2">
 					<Button label="ABOUT" color="purple" />
 				</Link>
 				{isAccountVisible && <Account />}
