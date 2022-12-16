@@ -1719,7 +1719,7 @@
     "@polkadot/util-crypto" "^9.4.1"
     "@polkadot/x-global" "^9.4.1"
 
-"@polkadot/keyring@^10.1.1", "@polkadot/keyring@^10.2.1":
+"@polkadot/keyring@*", "@polkadot/keyring@^10.1.1", "@polkadot/keyring@^10.2.1":
   "integrity" "sha512-84/zzxDZANQ4AfsCT1vrjX3I23/mj9WUWl1F7q9ruK6UBFyGsl46Y3ABOopFHij9UXhppndhB65IeDnqoOKqxQ=="
   "resolved" "https://registry.npmjs.org/@polkadot/keyring/-/keyring-10.2.1.tgz"
   "version" "10.2.1"
@@ -1728,7 +1728,7 @@
     "@polkadot/util" "10.2.1"
     "@polkadot/util-crypto" "10.2.1"
 
-"@polkadot/networks@^10.2.1", "@polkadot/networks@10.2.1":
+"@polkadot/networks@*", "@polkadot/networks@^10.2.1", "@polkadot/networks@10.2.1":
   "integrity" "sha512-cDZIY4jBo2tlDdSXNbECpuWer0NWlPcJNhHHveTiu2idje2QyIBNxBlAPViNGpz+ScAR0EknEzmQKuHOcSKxzg=="
   "resolved" "https://registry.npmjs.org/@polkadot/networks/-/networks-10.2.1.tgz"
   "version" "10.2.1"
@@ -2006,7 +2006,7 @@
     "ed2curve" "^0.3.0"
     "tweetnacl" "^1.0.3"
 
-"@polkadot/util@*", "@polkadot/util@^10.2.1", "@polkadot/util@^9.4.1", "@polkadot/util@^9.7.2", "@polkadot/util@9.7.2":
+"@polkadot/util@*", "@polkadot/util@^9.4.1", "@polkadot/util@^9.7.2", "@polkadot/util@9.7.2":
   "integrity" "sha512-ivTmA+KkPCq5i3O0Gk+dTds/hwdwlYCh89aKfeaG9ni3XHUbbuBgTqHneo648HqxwAwSAyiDiwE9EdXrzAdO4Q=="
   "resolved" "https://registry.npmjs.org/@polkadot/util/-/util-9.7.2.tgz"
   "version" "9.7.2"
@@ -2020,7 +2020,7 @@
     "bn.js" "^5.2.1"
     "ip-regex" "^4.3.0"
 
-"@polkadot/util@^10.1.1", "@polkadot/util@10.2.1":
+"@polkadot/util@^10.1.1", "@polkadot/util@^10.2.1", "@polkadot/util@10.2.1":
   "integrity" "sha512-ewGKSOp+VXKEeCvpCCP2Qqi/FVkewBF9vb/N8pRwuNQ2XE9k1lnsOZZeQemVBDhKsZz+h3IeNcWejaF6K3vYHQ=="
   "resolved" "https://registry.npmjs.org/@polkadot/util/-/util-10.2.1.tgz"
   "version" "10.2.1"
@@ -8236,7 +8236,7 @@
   "resolved" "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
   "version" "4.2.0"
 
-"postcss@^7.0.0 || ^8.0.1", "postcss@^8", "postcss@^8.0.0", "postcss@^8.0.3", "postcss@^8.0.9", "postcss@^8.1.0", "postcss@^8.1.4", "postcss@^8.2", "postcss@^8.2.14", "postcss@^8.2.15", "postcss@^8.2.2", "postcss@^8.3", "postcss@^8.3.3", "postcss@^8.3.5", "postcss@^8.4", "postcss@^8.4.18", "postcss@^8.4.19", "postcss@^8.4.20", "postcss@^8.4.4", "postcss@^8.4.6", "postcss@>= 8", "postcss@>=8", "postcss@>=8.0.9":
+"postcss@^7.0.0 || ^8.0.1", "postcss@^8", "postcss@^8.0.0", "postcss@^8.0.3", "postcss@^8.0.9", "postcss@^8.1.0", "postcss@^8.1.4", "postcss@^8.2", "postcss@^8.2.14", "postcss@^8.2.15", "postcss@^8.2.2", "postcss@^8.3", "postcss@^8.3.3", "postcss@^8.3.5", "postcss@^8.4", "postcss@^8.4.19", "postcss@^8.4.20", "postcss@^8.4.4", "postcss@^8.4.6", "postcss@>= 8", "postcss@>=8", "postcss@>=8.0.9":
   "integrity" "sha512-6Q04AXR1212bXr5fh03u8aAwbLxAQNGQ/Q1LNa0VfOI06ZAlhPHtQvE4OIdpj4kLThXilalPnmDSOD65DcHt+g=="
   "resolved" "https://registry.npmjs.org/postcss/-/postcss-8.4.20.tgz"
   "version" "8.4.20"
@@ -9390,7 +9390,7 @@
   "resolved" "https://registry.npmjs.org/style-loader/-/style-loader-3.3.1.tgz"
   "version" "3.3.1"
 
-"styled-components@^5.3.6", "styled-components@>= 2":
+"styled-components@*", "styled-components@>= 2":
   "integrity" "sha512-hGTZquGAaTqhGWldX7hhfzjnIYBZ0IXQXkCYdvF1Sq3DsUaLx6+NTHC5Jj1ooM2F68sBiVz3lvhfwQs/S3l6qg=="
   "resolved" "https://registry.npmjs.org/styled-components/-/styled-components-5.3.6.tgz"
   "version" "5.3.6"
@@ -10436,6 +10436,11 @@
     "string-width" "^4.2.0"
     "y18n" "^5.0.5"
     "yargs-parser" "^20.2.2"
+
+"yarn@^1.22.19":
+  "integrity" "sha512-/0V5q0WbslqnwP91tirOvldvYISzaqhClxzyUKXYxs07yUILIs5jx/k6CFe8bvKSkds5w+eiOqta39Wk3WxdcQ=="
+  "resolved" "https://registry.npmjs.org/yarn/-/yarn-1.22.19.tgz"
+  "version" "1.22.19"
 
 "yocto-queue@^0.1.0":
   "integrity" "sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q=="

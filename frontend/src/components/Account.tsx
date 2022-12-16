@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useAccount } from '@gear-js/react-hooks';
 import { ReactComponent as userSVG } from 'assets/images/icons/login.svg';
 import { Button } from '@gear-js/ui';
-import { AccountsModal } from './accounts-modal';
-import { Wallet } from './wallet';
+import { AccountsModal } from './layout/header/account/accounts-modal';
+import { Wallet } from './layout/header/account/wallet';
 
-function Account() {
+export default function Account() {
   const { account, accounts } = useAccount();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,5 +28,3 @@ function Account() {
     </>
   );
 }
-
-export { Account };

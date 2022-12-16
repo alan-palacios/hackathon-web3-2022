@@ -11,7 +11,7 @@ const socials = [
   { href: 'https://medium.com/@gear_techs', icon: Medium },
 ];
 
-function Socials() {
+export default function Socials() {
   const getItems = () =>
     socials.map(({ href, icon: Icon }) => (
       <li key={href}>
@@ -23,5 +23,3 @@ function Socials() {
 
   return <ul className={styles.socials}>{getItems()}</ul>;
 }
-
-export { Socials };
