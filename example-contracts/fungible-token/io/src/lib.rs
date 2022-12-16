@@ -10,16 +10,17 @@ pub struct DnsMeta {
     pub description: String,
 }
 
-#[derive(Debug, Decode, Encode, TypeInfo)]
+#[derive(Debug, Decode, Encode, TypeInfo, Eq, PartialEq, PartialOrd, Ord, Clone)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
 pub struct InitConfig {
     pub name: String,
     pub symbol: String,
     pub decimals: u8,
+    pub admin :ActorId//DNS
 }
 
-#[derive(Debug, Decode, Encode, TypeInfo)]
+#[derive(Debug, Decode, Encode, TypeInfo, Eq, PartialEq, PartialOrd, Ord, Clone)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
 pub enum FTAction {
@@ -40,7 +41,7 @@ pub enum FTAction {
     BalanceOf(ActorId),
 }
 
-#[derive(Debug, Encode, Decode, TypeInfo)]
+#[derive(Debug, Decode, Encode, TypeInfo, Eq, PartialEq, PartialOrd, Ord, Clone)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
 pub enum FTEvent {
