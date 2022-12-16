@@ -32,7 +32,7 @@ export default function Home() {
       stateAll.state?.Records.length ? (
         stateAll.state?.Records.map((element) => (
           <li key={element.id}
-						className='w-80 h-80 bg-neutral-700 flex flex-col justify-center'>
+						className='w-80 h-80 bg-neutral-800 rounded-lg flex flex-col justify-center'>
             <span>{element.id}</span>
             <span>{element.meta.name}</span>
             <span>{element.meta.link}</span>
@@ -48,8 +48,8 @@ export default function Home() {
   );
 
 	return (
-		<div className="flex flex-col justify-center bg-black min-h-full h-full">
-			<p className="italic">Indicare</p>
+		<div className="flex flex-col justify-center bg-gradient-to-b from-dark1 to-dark2 min-h-full h-full">
+			<p className="italic">THE CHAIN</p>
       {stateAll.isStateRead ? (
         <div>
           {getElementValue}
