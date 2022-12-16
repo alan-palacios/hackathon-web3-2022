@@ -5,6 +5,7 @@ import { useReadConfig } from "hooks/useReadConfig";
 import { useEffect, useMemo, useState } from "react";
 import { Icon } from '@iconify/react';
 import Button from "components/Button";
+import { Link } from "react-router-dom";
 import CardContract from "components/CardContract";
 
 export default function Home() {
@@ -51,11 +52,14 @@ export default function Home() {
 				<div className="mt-20 mb-5">
 					<img src="static/logo.svg" alt="The Chain Hub" width={400} />
 				</div>
+				<Link to='/register'>
+					<Button label="AGREGAR CONTRATO" />
+				</Link>
 				<div className="text-xl">
 					Where blocks connect
 				</div>
 			</div>
-			<div className="bg-neutral-700 w-full flex flex-col justify-center items-center">
+			<div className="w-full flex flex-col justify-center items-center mt-10">
 				<div className="flex items-center space-x-2">
 					<Input value={search} onChange={setSearch} />
 					<Button label="hola" width="40" color="purple" />
