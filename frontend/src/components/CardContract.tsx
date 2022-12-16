@@ -44,11 +44,11 @@ export default function CardContract({ contract, ...defaultProps }: CardContract
 				}, 5000)
 			}
 		} else if (type === "link") {
-			if (!isCopied) {
+			if (!isCopiedLink) {
 				navigator.clipboard.writeText(contract.meta.link);
-				setIsCopied(true)
+				setIsCopiedLink(true)
 				setTimeout(() => {
-					setIsCopied(false)
+					setIsCopiedLink(false)
 				}, 5000)
 			}
 		}
