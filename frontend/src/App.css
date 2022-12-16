@@ -2,25 +2,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-#root {
-	max-width: 1200px;
-	min-height: 100vh;
-	margin: 0 auto;
-	padding: 0 16px;
-	display: flex;
-	flex-direction: column;
-	box-sizing: content-box;
-	background: black;
-	color: white;
-}
-
-main {
-	flex: 1;
-	padding: 30px 0 60px;
-	position: relative; 
-}
-
-body {
-	
-}

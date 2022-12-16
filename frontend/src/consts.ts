@@ -1,7 +1,11 @@
+import { Hex } from "@gear-js/api";
+
 const ADDRESS = {
 	NODE: process.env.REACT_APP_NODE_ADDRESS as string,
 	DAPPS_API: process.env.REACT_APP_DAPPS_API_ADDRESS as string,
 };
+
+const CONTRACT_ID = process.env.REACT_APP_PROGRAM_ID as Hex;
 
 const LOCAL_STORAGE = {
 	ACCOUNT: 'account',
@@ -14,4 +18,4 @@ const SUBHEADING = {
 
 const ID_CONTRACT_ADDRESS = "0xaeda9e4e9196231ef31a62779629f5c3d61824bb3ffb8b57489e9133ae47d7c8"
 
-export { ADDRESS, LOCAL_STORAGE, SUBHEADING, ID_CONTRACT_ADDRESS };
+export { ADDRESS, LOCAL_STORAGE, SUBHEADING, ID_CONTRACT_ADDRESS, CONTRACT_ID };

@@ -1,6 +1,8 @@
 import { GearApi } from "@gear-js/api";
 import { ID_CONTRACT_ADDRESS } from "consts";
+
 const fs = require('fs');
+
 async function connect() {
 	const gearApi = await GearApi.create({
 		providerAddress: 'wss://rpc-node.gear-tech.io:443',

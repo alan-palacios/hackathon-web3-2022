@@ -12,13 +12,13 @@ function Component() {
 	const isAppReady = isApiReady;
 
 	return (
-		<>
+		<div className='bg-neutral-900 w-full min-w-full h-screen text-white'>
 			<Header isAccountVisible={isAccountReady} />
 				<main>
 					{isAppReady ? <Routing /> : (<span>Loading...</span>) }
 				</main>
 			<Footer />
-		</>
+		</div>
 	);
 }
 
