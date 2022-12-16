@@ -1,4 +1,6 @@
-type ElementType = {
+import { ReactNode } from 'react';
+
+export type ElementType = {
   createdBy: string;
   id: string;
 
@@ -9,4 +11,11 @@ type ElementType = {
   };
 };
 
-export type { ElementType };
+export type Props = {
+  children: ReactNode;
+};
+
+export type UserStatus = {
+  isAdmin: boolean,
+  isMember: boolean
+};
