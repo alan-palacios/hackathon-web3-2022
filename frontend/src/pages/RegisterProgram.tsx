@@ -1,29 +1,24 @@
 import { useAccount, useApi } from '@gear-js/react-hooks';
-import { EventRecord } from '@polkadot/types/interfaces';
-import { ISubmittableResult } from '@polkadot/types/types';
 import Input from 'components/Input'
-import { CONTRACT_ID } from 'consts';
 import useCalculateGas from 'hooks/useCalculateGas';
 import { useState } from 'react'
-import { dnsMeta } from 'out/metaTypes';
 import { toast } from 'react-toastify';
-import { GearKeyring } from '@gear-js/api';
 import { Link } from 'react-router-dom';
 import Button from 'components/Button';
 import { useDNSAction } from 'hooks/useDNSAction';
 
 export default function RegisterProgram() {
 	const { api } = useApi();
-  const { account } = useAccount();
-	const {calculateGas} = useCalculateGas();
-	const {updateProgram, registerProgram, removeProgram} = useDNSAction();
+	const { account } = useAccount();
+	const { calculateGas } = useCalculateGas();
+	const { updateProgram, registerProgram, removeProgram } = useDNSAction();
 	const [registerProgramId, setRegisterProgramId] = useState('');
 	const [updateProgramId, setUpdateProgramId] = useState('0x8ea3458380cb5f703e51b446254a940b1326886f769ca3714027adb820e91743');
 	const [removeProgramId, setRemoveProgramId] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 
-	const updateHandler = async ()=>{
-		if (updateProgramId==='') {
+	const updateHandler = async () => {
+		if (updateProgramId === '') {
 			alert('programID is empty');
 			return;
 		}
@@ -35,8 +30,8 @@ export default function RegisterProgram() {
 		}
 	}
 
-	const registerHandler = async ()=>{
-		if (registerProgramId==='') {
+	const registerHandler = async () => {
+		if (registerProgramId === '') {
 			alert('programID is empty');
 			return;
 		}
@@ -49,8 +44,8 @@ export default function RegisterProgram() {
 		}
 	}
 
-	const removeHandler = async ()=>{
-		if (removeProgramId==='') {
+	const removeHandler = async () => {
+		if (removeProgramId === '') {
 			alert('programID is empty');
 			return;
 		}
@@ -63,7 +58,7 @@ export default function RegisterProgram() {
 	}
 
 	return (
-		<div className='w-full flex justify-center'>
+		<div className='w-full h-full min-h-full flex justify-center'>
 			<div className="bg-dark3 flex flex-col justify-center w-1/2 items-center rounded-lg
 			py-10">
 				<Link to='/'>
@@ -90,6 +85,6 @@ export default function RegisterProgram() {
 				</div>
 			</div>
 		</div>
-		
+
 	)
 }
