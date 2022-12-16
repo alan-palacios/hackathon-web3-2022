@@ -1,20 +1,16 @@
 import { bufferString } from "assets/metaBuffer";
-import Input from "components/Input";
-import { Select } from "components/Select";
 import { useReadConfig } from "hooks/useReadConfig";
 import { useEffect, useMemo, useState } from "react";
 import Button from "components/Button";
-import { Link, useParams } from "react-router-dom";
-import CardContract from "components/CardContract";
+import { useParams } from "react-router-dom";
 
 export default function ProgramPage() {
 	const { id } = useParams();
 	const [selectValue, setSelectValue] = useState('GetById');
 	const [search, setSearch] = useState('');
-	const [programId, setProgramId] = useState('');
 	const metaBuffer = useMemo(() => Buffer.from(bufferString, 'base64'), []);
 	const { stateAll } = useReadConfig(metaBuffer, selectValue, id);
-	console.log(stateAll);
+	// console.log(stateAll);
 
 	useEffect(() => {
 		if (stateAll.error) {

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Icon } from '@iconify/react';
 import { ElementType } from 'types';
 import { useReadConfig } from 'hooks/useReadConfig';
@@ -10,7 +10,7 @@ interface CardContractProps {
 	contract: ElementType
 }
 
-export default function CardContract({ contract, ...defaultProps }: CardContractProps) {
+export default function CardContract({ contract, }: CardContractProps) {
 	function shortenHex(hex: string, length = 4) {
 		if (!hex) return ''
 		return `${hex.substring(0, length + 2)}…${hex.substring(

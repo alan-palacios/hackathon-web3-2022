@@ -69,7 +69,7 @@ export default function Home() {
 				<Select handleSelectedValue={setSelectValue} />
 			</div>
 			{stateAll.isStateRead ? (
-				<div className="w-full flex overflow-auto">
+				<div className="flex overflow-auto w-full">
 					{getElementValue}
 				</div>
 			) : (
