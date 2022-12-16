@@ -1,28 +1,92 @@
-import { useAccount, useAlert, useApi } from "@gear-js/react-hooks";
-import { u64 } from "@polkadot/types";
+import { GearKeyring } from "@gear-js/api";
+import { useAccount, useApi } from "@gear-js/react-hooks";
+import { CONTRACT_ID } from "consts";
+import { dnsMeta } from "out/metaTypes";
+import { toast } from "react-toastify";
+import useCalculateGas from "./useCalculateGas";
 
 export function useDNSAction() {
+	const {calculateGas} = useCalculateGas();
 	const { api } = useApi();
   const { account } = useAccount();
-  const alert = useAlert();
+	console.log(account);
+	const addressAux = '0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d';
 
-	const updateProgram = (message: any)=>{
-		/*
+	const sendMessage = async (message: any)=>{
 		if (account) {
-			const { address } = account;
-			const { source } = account.meta;
+			console.log(account.decodedAddress);
+			const gas = await calculateGas(message, account.decodedAddress);
+			if (gas==null || gas.min_limit==null) {
+				toast.error('Cannot calculate gas');
+				return;
+			}
+			message.gasLimit = gas.min_limit.toString();
 
-			calculateGas(message)!
-				.then((limit: u64) => (message.gasLimit = limit.toString()))
-				.then(() => api.message.submit(message, erc20Meta))
-				.then(() => web3FromSource(source))
-				.then(({ signer }) => ({ signer }))
-				.then((options) =>
-					api.message.signAndSend(address, options, handleStatus),
-				)
-				.catch(handleError);
+			const keyring = await GearKeyring.fromSuri('//Alice');
+			// In that case payload will be encoded using meta.handle_input type
+			const extrinsic = api.message.send(message, dnsMeta);
+			// So if you want to use another type you can specify it
+			// extrinsic = api.message.send(message, dnsMeta, dnsMeta.async_handle_input);
+
+			const event = await extrinsic.signAndSend(keyring);
+			return event.toHuman();
 		}
-		*/
 	}
-	return {updateProgram};
+
+	const registerProgram = async (programId: string)=>{
+		console.log(`register program ${programId}`);
+		try {
+			const message = {
+				destination: CONTRACT_ID,
+				payload: {
+					register: programId,
+				},
+				gasLimit: '300000000',
+				value: '0',
+			};
+			return await sendMessage(message);	
+		} catch (error: any) {
+			console.error(`${error.name}: ${error.message}`);
+			throw new Error(error);
+		}
+	}
+
+	const updateProgram = async (programId: string)=>{
+		console.log(`update program ${programId}`);
+		try {
+			const message = {
+				destination: CONTRACT_ID,
+				payload: {
+					update: programId,
+				},
+				gasLimit: '300000000',
+				value: '0',
+			};
+			return await sendMessage(message);	
+		} catch (error: any) {
+			console.error(`${error.name}: ${error.message}`);
+			throw new Error(error);
+		}
+	}
+
+
+	const removeProgram = async (programId: string)=>{
+		console.log(`remove program ${programId}`);
+		try {
+			const message = {
+				destination: CONTRACT_ID,
+				payload: {
+					remove: programId,
+				},
+				gasLimit: '300000000',
+				value: '0',
+			};
+			return await sendMessage(message);	
+		} catch (error: any) {
+			console.error(`${error.name}: ${error.message}`);
+			throw new Error(error);
+		}
+	}
+
+	return {updateProgram, registerProgram, removeProgram};
 }

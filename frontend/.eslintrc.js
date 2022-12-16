@@ -26,6 +26,7 @@ module.exports = {
     'react/require-default-props': 'off', // we don't use prop-types
     'react/button-has-type': 'off',
 		'import/prefer-default-export': 'off',
+		'no-param-reassign': 'off',
 
 		'@typescript-eslint/no-unused-vars': 'warn', // 'error' is not convinient in development
 
