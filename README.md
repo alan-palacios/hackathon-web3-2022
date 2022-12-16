@@ -41,8 +41,8 @@ After your program has been uploaded on chain you need to build your frontend to
 
 The next step is to send Metadata to your program using the `SetDnsMeta` enum variant. Where you need to set name, link (that is link to html file on IPFS) and description.
 
-To register your DApp in DNS, go to {link}, then you need to click the “Add DApp” button right at the bottom of The Chain Hub logo and add your DApp contract address in the Register form.
+To register your DApp in DNS, go to http://3.129.16.5/, then you need to click the “Add DApp” button right at the bottom of The Chain Hub logo and add your DApp contract address in the Register form.
 
 ## Open and use dApp
 
-Go to {link}. If you have your DApp registered in DNS program, you will see it in the list of available DApps. Just click the “Open” button and your interface will be opened in the new tab.
+Go to http://3.129.16.5/. If you have your DApp registered in DNS program, you will see it in the list of available DApps. Just click the “Open” button and your interface will be opened in the new tab.
