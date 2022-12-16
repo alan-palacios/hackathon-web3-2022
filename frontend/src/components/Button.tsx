@@ -1,22 +1,22 @@
 import React, { ButtonHTMLAttributes } from 'react'
 
 /* eslint-disable react/jsx-props-no-spreading */
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	/** Button content */
-  label: string
+	label: string
 	/** Width full */
-	full?: boolean
-  /** append styling */
-  className?: string
-  /** Button type */
-  selected?: boolean 
+	width?: string
+	/** append styling */
+	className?: string
+	/** Button type */
+	color?: string
 }
 
-export default function Button({label, full=false, className, selected=false, color='purple', ...defaultProps}:ButtonProps) {
+export default function Button({ label, className, width, color, ...defaultProps }: ButtonProps) {
 	return (
-		<button className={`btn-hatchy ${color} ${selected?'selected':''} pb-2 pt-4 px-10 ${className} ${full?'w-full':''} `}
-		{...defaultProps}>
-			{label}	
+		<button className={`bg-${color} px-10 w-${width} ${className}`}
+			{...defaultProps}>
+			{label}
 		</button>
 	)
 }

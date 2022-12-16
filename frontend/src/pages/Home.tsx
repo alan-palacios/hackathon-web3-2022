@@ -30,15 +30,19 @@ export default function Home() {
 		() =>
 			stateAll.state?.Records.length ? (
 				stateAll.state?.Records.map((element) => (
-					<li key={element.id}
-						className='w-full bg-neutral-800 rounded-lg flex flex-col justify-center'>
-						<span>{element.meta.name}</span>
-						<span>{element.id}</span>
-						<span>{element.meta.description}</span>
-						<span>{element.createdBy}</span>
-						<span>{element.meta.link}</span>
-						<Button label="Open" type="button" onClick={() => readDataFrom(element.meta.link)} />
-					</li>
+					<div className="w-full">
+						<li key={element.id}
+							className='w-full bg-neutral-800 rounded-lg flex flex-col justify-center'>
+							<span>{element.meta.name}</span>
+							<span>{element.id}</span>
+							<span>{element.meta.description}</span>
+							<span>{element.createdBy}</span>
+							<span>{element.meta.link}</span>
+						</li>
+						<div className="flex justify-center">
+							<Button label="Open" width="40" color="purple" onClick={() => readDataFrom(element.meta.link)} />
+						</div>
+					</div>
 				))
 			) : (
 				<h4>Results wasnt found</h4>
@@ -59,17 +63,11 @@ export default function Home() {
 			<div className="bg-neutral-700 w-full flex flex-col justify-center items-center">
 				<div className="flex items-center space-x-2">
 					<Input value={search} onChange={setSearch} />
-					<Icon icon="il:search" width={30} />
+					<Button label="" width="40" color="purple" />
+					<Icon icon="il:search" width={25} />
 				</div>
 				<Select handleSelectedValue={setSelectValue} />
 			</div>
-			{stateAll.isStateRead ? (
-				<div>
-					{getElementValue}
-				</div>
-			) : (
-				<span>Loading ...</span>
-			)}
 			{stateAll.isStateRead ? (
 				<div>
 					{getElementValue}
