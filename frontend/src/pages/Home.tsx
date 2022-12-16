@@ -49,7 +49,10 @@ export default function Home() {
 	return (
 		<div className="flex flex-col justify-center bg-gradient-to-b from-dark1 to-dark2 min-h-full h-full">
       <div className="ml-5 mt-2">
-        <Button label="VIEW CONTRACT TEMPLATE"/>
+        <a href="https://github.com/alan-palacios/hackathon-web3-2022/tree/main/domain-template"
+        target="_blank" rel="noreferrer">
+          <Button label="VIEW CONTRACT TEMPLATE"/>
+        </a>
       </div>
 			<div className="flex flex-col items-center">
 				<div className="mt-20 mb-5">
